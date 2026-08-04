@@ -253,6 +253,7 @@ p { margin: 0 0 1em; }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
+  align-items: start;
   background: #fff;
   border-radius: var(--radius-m);
   box-shadow: var(--shadow);
@@ -461,6 +462,7 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius-l);
   padding: 64px 32px;
   max-width: 780px;
+  margin: 0 auto;
 }
 .cta-final-inner h2 { color: #fff; }
 .cta-final-inner p { color: rgba(255,255,255,.85); max-width: 46ch; margin: 0 auto 26px; }
@@ -494,7 +496,8 @@ p { margin: 0 0 1em; }
   background: #25D366;
   color: #fff;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 12px 28px -10px rgba(0,0,0,.4);
+  border: 3px solid var(--cream);
+  box-shadow: 0 12px 28px -10px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.06);
   z-index: 90;
   transition: transform .2s ease;
 }
