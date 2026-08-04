@@ -242,6 +242,8 @@ p { margin: 0 0 1em; }
 }
 .hero-subtitle { font-size: 1.15rem; color: var(--ink-soft); max-width: 46ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+/* both hero buttons share one width so they read as a matched pair */
+.hero-actions .btn { min-width: 264px; justify-content: center; }
 
 .hero-media { position: relative; justify-self: center; width: 100%; max-width: 380px; }
 .hero-blob {
