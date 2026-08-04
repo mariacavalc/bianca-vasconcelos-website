@@ -6,13 +6,28 @@ const menuToggle = document.getElementById("menuToggle");
 const siteNav = document.getElementById("siteNav");
 const navBackdrop = document.getElementById("navBackdrop");
 
+let savedScrollY = 0;
+
 function setMenu(isOpen) {
+  if (isOpen === siteNav.classList.contains("is-open")) return;
+
   siteNav.classList.toggle("is-open", isOpen);
   navBackdrop.classList.toggle("is-open", isOpen);
   menuToggle.classList.toggle("is-open", isOpen);
-  document.body.classList.toggle("menu-open", isOpen);
   menuToggle.setAttribute("aria-expanded", isOpen);
   menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+
+  // pinning the body is what actually holds the page still on iOS, but it
+  // drops the scroll position, so stash it and put it back on close
+  if (isOpen) {
+    savedScrollY = window.scrollY;
+    document.body.style.top = -savedScrollY + "px";
+    document.body.classList.add("menu-open");
+  } else {
+    document.body.classList.remove("menu-open");
+    document.body.style.top = "";
+    window.scrollTo({ top: savedScrollY, behavior: "instant" });
+  }
 }
 
 menuToggle.addEventListener("click", () => {

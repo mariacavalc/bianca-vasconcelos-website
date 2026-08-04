@@ -32,7 +32,15 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 html, body { max-width: 100%; overflow-x: hidden; }
-body.menu-open { overflow: hidden; }
+/* iOS Safari ignores overflow:hidden on body, so pin it instead (JS keeps
+   the scroll offset in the `top` inline style and restores it on close). */
+body.menu-open {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
 
 body {
   margin: 0;
@@ -133,8 +141,13 @@ p { margin: 0 0 1em; }
   top: 0;
   z-index: 100;
   background: rgba(251, 245, 232, .92);
-  backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(127, 139, 69, .15);
+}
+/* backdrop-filter makes the header a containing block for fixed-position
+   descendants, which would trap the mobile menu's full-screen overlay inside
+   the header box. Only apply it above the mobile-menu breakpoint. */
+@media (min-width: 861px) {
+  .site-header { backdrop-filter: blur(8px); }
 }
 .header-inner {
   display: flex;
