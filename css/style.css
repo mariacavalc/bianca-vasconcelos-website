@@ -211,6 +211,7 @@ p { margin: 0 0 1em; }
 }
 
 .nav-backdrop { display: none; }
+.nav-close { display: none; }
 .menu-toggle span {
   display: block;
   width: 24px;
@@ -580,9 +581,27 @@ p { margin: 0 0 1em; }
     z-index: 1;
   }
   .nav-backdrop.is-open { opacity: 1; pointer-events: auto; }
-  .menu-toggle.is-open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-  .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
-  .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  /* The close button lives inside the panel rather than in the header:
+     locking the body pins it at a negative offset, which drags the sticky
+     header — and anything inside it — off-screen whenever the menu is
+     opened mid-page. */
+  .nav-close {
+    display: flex;
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--olive-dark);
+    cursor: pointer;
+  }
+  body.menu-open .menu-toggle { visibility: hidden; }
 
   .hero-inner { grid-template-columns: 1fr; text-align: center; }
   .hero-subtitle { margin-left: auto; margin-right: auto; }

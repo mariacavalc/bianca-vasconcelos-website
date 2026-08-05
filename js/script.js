@@ -5,6 +5,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 const menuToggle = document.getElementById("menuToggle");
 const siteNav = document.getElementById("siteNav");
 const navBackdrop = document.getElementById("navBackdrop");
+const navClose = document.getElementById("navClose");
 
 let savedScrollY = 0;
 
@@ -35,6 +36,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 navBackdrop.addEventListener("click", () => setMenu(false));
+navClose.addEventListener("click", () => setMenu(false));
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") setMenu(false);
