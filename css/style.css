@@ -166,6 +166,7 @@ p { margin: 0 0 1em; }
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: .01em;
+  white-space: nowrap;
 }
 .brand-name .l1 { color: var(--terracotta); }
 .brand-name .l2 { color: var(--pink); }
