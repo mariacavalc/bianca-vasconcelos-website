@@ -31,7 +31,10 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-html, body { max-width: 100%; overflow-x: hidden; }
+/* `clip` (not `hidden`) contains stray horizontal overflow without turning
+   the page into a scroll container, which would stop the sticky header from
+   sticking. */
+html, body { max-width: 100%; overflow-x: clip; }
 /* iOS Safari ignores overflow:hidden on body, so pin it instead (JS keeps
    the scroll offset in the `top` inline style and restores it on close). */
 body.menu-open {
